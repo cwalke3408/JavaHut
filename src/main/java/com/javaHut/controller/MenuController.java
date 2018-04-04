@@ -51,12 +51,12 @@ public class MenuController {
 
 	@RequestMapping("/updatePerson")
 	public void updatePersonService() {
-		personService.thePerson().updatePersonById();
+		personService.thePerson().updatePersonById(3);
 	}
 	
 	@RequestMapping("/deletePerson")
 	public void deletePersonService() {
-		personService.thePerson().deletePersonById();
+		personService.thePerson().deletePersonById(3);
 	}
 	
 //	@RequestMapping("/getPerson")
