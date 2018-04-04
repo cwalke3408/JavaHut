@@ -18,6 +18,15 @@ public class Pizza {
 	public String getPizzaName() {
 		return pizzaName;
 	}
+
+	public void setPizzaName(String pizzaName) {
+		this.pizzaName = pizzaName;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 	
 
 }
