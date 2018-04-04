@@ -24,7 +24,8 @@ public class PersonDao {
 		
 		private final String SQL = "SELECT personid, lastname, firstname, address, city FROM public.christian where personid = 1";
 		private final String SQL2 = "insert into Christian values(?, ?, ?, ?, ?)";
-				
+		private final String SQL3 = "update christian set lastname='Walker' where personid=2";
+		private final String SQL4 = "delete from christian where personid=2";
 		
 		public Person getPersonById(){
 			List<Person> m = jdbcTemplate.query(SQL, new BeanPropertyRowMapper<>(Person.class));
@@ -39,10 +40,10 @@ public class PersonDao {
 		}
 
 		public void updatePersonById() {
-			
+			jdbcTemplate.update(SQL3);
 		}
 		
 		public void deletePersonById() {
-			
+			jdbcTemplate.update(SQL4);
 		}
 }
