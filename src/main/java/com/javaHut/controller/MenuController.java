@@ -37,7 +37,16 @@ public class MenuController {
 	
 	@RequestMapping("/addPerson")
 	public void addPersonService() {
-		personService.thePerson().addPersonToTable();
+		
+		Person person = new Person();
+		
+		person.setPersonid(9);
+		person.setLastname("Walker");
+		person.setFirstname("Christian");
+		person.setAddress("Smyrna");
+		person.setCity("Atlanta");
+		
+		personService.thePerson().addPersonToTable(person);
 	}
 
 	@RequestMapping("/updatePerson")
