@@ -58,6 +58,16 @@ public class MenuController {
 	public void deletePersonService() {
 		personService.thePerson().deletePersonById(3);
 	}
+
+	@RequestMapping("/countLastName")
+	public void countOfLastName() {
+		personService.thePerson().countOfLastName("Walker");
+	}
+	
+	@RequestMapping("/countFirstName")
+	public void countOfFirstName() {
+		personService.thePerson().countOfFirstName("Christan");
+	}
 	
 //	@RequestMapping("/getPerson")
 //	public Person thePerson() {

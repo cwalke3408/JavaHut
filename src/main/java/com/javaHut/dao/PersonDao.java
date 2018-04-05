@@ -1,6 +1,7 @@
 package com.javaHut.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -45,5 +46,26 @@ public class PersonDao {
 		
 		public void deletePersonById(int id) {
 			jdbcTemplate.update(SQL4, id);
+		}
+		
+		
+		// Count the amount of the given lastname in the database
+		public void countOfLastName(String lastname) {		
+			String sql = "select count(*) from christian where lastname = ?";
+			
+			// Search the table Christian for lastname
+			// Returns each row entry that matches into an index e.g. ['row1 that matched', 'row2 that matched', ... , queryForMap]
+			// Returns each col entry that matches into an entry in a map {'col name' : result } ...
+			List<Map <String, Object>> count = jdbcTemplate.queryForList(sql, lastname);
+			System.out.println( "----- Amount of " + lastname+ " = " + count.get(0).get("count") + " ---------");
+		}
+		
+		// Count the amount of the given firstname in the database
+		public void countOfFirstName(String firstname) {
+			String sql = "select count(*) from christian where firstname = ?";
+			
+			// Search the table 'Christian' for the param 'firstname' and expect the result as a 'Interger.class'
+			int count = jdbcTemplate.queryForObject(sql, Integer.class, firstname);
+			System.out.println( "----- Amount of " + firstname + " = "+ count + " ---------");		
 		}
 }
