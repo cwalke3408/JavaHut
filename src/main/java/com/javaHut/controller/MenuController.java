@@ -68,6 +68,12 @@ public class MenuController {
 	public void countOfFirstName() {
 		personService.thePerson().countOfFirstName("Christan");
 	}
+
+	@RequestMapping("/restPersonById")
+	public void restPersonById() {
+		personService.thePerson().restPersonById();
+	}
+	
 	
 //	@RequestMapping("/getPerson")
 //	public Person thePerson() {

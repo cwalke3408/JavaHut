@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import com.javaHut.model.Menu;
 import com.javaHut.model.Person;
@@ -21,6 +22,8 @@ public class PersonDao {
 		 
 		@Autowired
 		private JdbcTemplate jdbcTemplate;
+		@Autowired
+		private RestTemplate restTemplate;
 
 		
 		private final String SQL = "SELECT personid, lastname, firstname, address, city FROM public.christian where personid = 1";
@@ -63,9 +66,16 @@ public class PersonDao {
 		// Count the amount of the given firstname in the database
 		public void countOfFirstName(String firstname) {
 			String sql = "select count(*) from christian where firstname = ?";
-			
+
 			// Search the table 'Christian' for the param 'firstname' and expect the result as a 'Interger.class'
 			int count = jdbcTemplate.queryForObject(sql, Integer.class, firstname);
 			System.out.println( "----- Amount of " + firstname + " = "+ count + " ---------");		
 		}
+		
+		public Person restPersonById() {
+			Person person = restTemplate.getForObject("http://192.168.88.81:8080/getPersonById", Person.class);
+			return person;
+		}
+		
+	
 }
