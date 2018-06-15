@@ -31,11 +31,11 @@ public class PersonService {
 	}
 	
 	//@Scheduled(cron = "${cron.schedule}")
-	@Scheduled(fixedRate = 5000)
-	public void reportCurrentTimeAgain() {
-		System.out.println("Hello World");
-		log.info("The time is now {}", dateFormat);
-		//log.debug("Debug goes here");
-	}
+//	@Scheduled(fixedRate = 5000)
+//	public void reportCurrentTimeAgain() {
+//		System.out.println("Hello World");
+//		log.info("The time is now {}", dateFormat);
+//		//log.debug("Debug goes here");
+//	}
 	
 }

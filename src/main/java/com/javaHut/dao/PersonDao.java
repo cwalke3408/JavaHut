@@ -3,17 +3,12 @@ package com.javaHut.dao;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.javaHut.model.Menu;
 import com.javaHut.model.Person;
 
 @Component
@@ -39,7 +34,7 @@ public class PersonDao {
 		
 		public void addPersonToTable(Person person) {
 			int rows = jdbcTemplate.update(SQL2, person.getPersonid(), person.getLastname(), person.getFirstname(), person.getAddress(), person.getCity());
-			System.out.println("Number of rows added: " + rows);
+			System.out.println("New peson: " + person.getFirstname());
 
 		}
 
